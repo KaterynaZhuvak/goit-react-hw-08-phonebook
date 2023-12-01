@@ -4,35 +4,42 @@ import MyContacts from 'pages/MyContacts/MyContacts';
 import { StyledBook } from 'components/Styled';
 import Login from 'pages/Login/Login';
 import Register from 'pages/Register/Register';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { refreshThunk } from 'redux/Auth/auth.reducer';
+import { selectAuthAuthenticated, selectAuthUserData } from 'redux/Auth/auth.selectors';
 
 export const App = () => {
+  const authenticated = useSelector(selectAuthAuthenticated);
+  const userData = useSelector(selectAuthUserData)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(refreshThunk())
+  }, [dispatch])
   return (
     <StyledBook>
       <div>
         <header>
           <nav>
-            <ul>
-              <li>
-                <NavLink className="nav-link" to="/">
+            {authenticated ? <>
+            <NavLink className="nav-link" to="/">
                   Create new contact
                 </NavLink>
-              </li>
-              <li>
+
                 <NavLink className="nav-link" to="/contacts">
                   Contacts
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className="nav-link" to="/login">
+              </NavLink>
+              <div><span>Hello {userData.name }</span>
+            <button>log out</button></div></> : <>
+            <NavLink className="nav-link" to="/login">
                   login
                 </NavLink>
-              </li>
-              <li>
+
                 <NavLink className="nav-link" to="/register">
                   register
-                </NavLink>
-              </li>
-            </ul>
+            </NavLink></>}
+
           </nav>
         </header>
 
