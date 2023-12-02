@@ -6,8 +6,10 @@ import Login from 'pages/Login/Login';
 import Register from 'pages/Register/Register';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { refreshThunk } from 'redux/Auth/auth.reducer';
+import { logOutThunk, refreshThunk } from 'redux/Auth/auth.reducer';
 import { selectAuthAuthenticated, selectAuthUserData } from 'redux/Auth/auth.selectors';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
 
 export const App = () => {
   const authenticated = useSelector(selectAuthAuthenticated);
@@ -17,6 +19,10 @@ export const App = () => {
   useEffect(() => {
     dispatch(refreshThunk())
   }, [dispatch])
+
+  const onLogOut = () => {
+    dispatch(logOutThunk())
+  }
   return (
     <StyledBook>
       <div>
@@ -31,7 +37,7 @@ export const App = () => {
                   Contacts
               </NavLink>
               <div><span>Hello {userData.name }</span>
-            <button>log out</button></div></> : <>
+            <button onClick={onLogOut}>log out</button></div></> : <>
             <NavLink className="nav-link" to="/login">
                   login
                 </NavLink>
@@ -44,10 +50,11 @@ export const App = () => {
         </header>
 
         <Routes>
-          <Route path="/" element={<CreateNewContact />} />
-          <Route path="/contacts" element={<MyContacts />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<PrivateRoute><CreateNewContact /></PrivateRoute>} />
+          <Route path="/contacts" element={<PrivateRoute><MyContacts /></PrivateRoute>} />
+          
+          <Route path="/login" element={<RestrictedRoute><Login /></RestrictedRoute>} />
+          <Route path="/register" element={<RestrictedRoute><Register /></RestrictedRoute>} />
         </Routes>
       </div>
     </StyledBook>

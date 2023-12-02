@@ -38,16 +38,31 @@ export const registerThunk = createAsyncThunk(
   }
 );
 
+export const logOutThunk = createAsyncThunk(
+  'auth/logOut',
+  async (_, thunkApi) => {
+    try {
+      const { data } = await instance.post('/users/logout');
+      console.log(data);
+
+      return data;
+    } catch (err) {
+      console.error('Error:', err);
+      return thunkApi.rejectWithValue(err.message);
+    }
+  }
+);
+
 export const refreshThunk = createAsyncThunk(
   'auth/refresh',
   async (_, thunkApi) => {
     try {
       const state = thunkApi.getState();
       const token = state.auth.token;
-setToken(token);
+      setToken(token);
       const { data } = await instance.get('/users/current');
       console.log(data);
-      
+
       return data;
     } catch (err) {
       console.error('Error:', err);
@@ -56,11 +71,12 @@ setToken(token);
   },
   {
     condition: (_, thunkApi) => {
-    const state = thunkApi.getState();
+      const state = thunkApi.getState();
       const token = state.auth.token;
       if (!token) return false;
       return true;
-  }}
+    },
+  }
 );
 
 const initialState = {
@@ -89,19 +105,39 @@ const authSlice = createSlice({
         state.token = payload.token;
         state.userData = payload.user;
       })
+      .addCase(logOutThunk.fulfilled, () => {
+        return initialState;
+      })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.authenticated = true;
         state.userData = payload;
       })
-      .addMatcher(isAnyOf(loginThunk.pending, registerThunk.pending, refreshThunk.pending), state => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addMatcher(isAnyOf(loginThunk.pending, registerThunk.rejected, refreshThunk.rejected), (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
-      }),
+
+      .addMatcher(
+        isAnyOf(
+          loginThunk.pending,
+          registerThunk.pending,
+          logOutThunk.pending,
+          refreshThunk.pending
+        ),
+        state => {
+          state.isLoading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          loginThunk.pending,
+          registerThunk.rejected,
+          logOutThunk.rejected,
+          refreshThunk.rejected
+        ),
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.error = payload;
+        }
+      ),
 });
 
 export const authReducer = authSlice.reducer;
