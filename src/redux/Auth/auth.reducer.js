@@ -128,7 +128,7 @@ const authSlice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-          loginThunk.pending,
+          loginThunk.rejected,
           registerThunk.rejected,
           logOutThunk.rejected,
           refreshThunk.rejected
