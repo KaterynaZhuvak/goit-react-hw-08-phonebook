@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { addContact } from 'redux/Contacts/contacts.reducer';
 import { selectContacts } from 'redux/Contacts/contacts.selectors';
+import { selectAuthUserData } from 'redux/Auth/auth.selectors';
 
 const initialValues = {
   name: '',
@@ -22,6 +23,7 @@ const schema = yup.object().shape({
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
+  const userData = useSelector(selectAuthUserData);
 
   const handleAddContact = contact => {
     if (
@@ -52,7 +54,7 @@ export const ContactForm = () => {
         <div className="hero">
           <PersonSvg />
         </div>
-        <div className="title-box">Add new contact</div>
+        <div className="title-box">Hello {userData.name}!</div>
 
         <Formik
           initialValues={initialValues}

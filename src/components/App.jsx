@@ -28,7 +28,7 @@ export const App = () => {
       <div>
         <header>
           <nav>
-            {authenticated ? <>
+            {authenticated ? <div >
             <NavLink className="nav-link" to="/">
                   Create new contact
                 </NavLink>
@@ -36,15 +36,15 @@ export const App = () => {
                 <NavLink className="nav-link" to="/contacts">
                   Contacts
               </NavLink>
-              <div><span>Hello {userData.name }</span>
-            <button onClick={onLogOut}>log out</button></div></> : <>
+              <div>
+            <button className='button-log-out' onClick={onLogOut}>log out</button></div></div> : <div>
             <NavLink className="nav-link" to="/login">
                   login
                 </NavLink>
 
                 <NavLink className="nav-link" to="/register">
                   register
-            </NavLink></>}
+            </NavLink></div>}
 
           </nav>
         </header>

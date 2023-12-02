@@ -63,4 +63,26 @@ export const StyledList = styled.div`
     padding: 0px;
     overflow: hidden;
   }
+
+  .favorite-btn {
+    background-color: transparent;
+    border: none;
+    fill: black;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+
+  .favorite {
+    fill: red;
+  }
+
+  .favorite:hover {
+    transform: scale(1.3);
+    fill: red;
+  }
 `;

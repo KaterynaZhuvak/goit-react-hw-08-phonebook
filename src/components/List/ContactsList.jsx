@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { StyledList } from './Styled';
 import { ReactComponent as TrashSvg } from 'icons/trashSvg.svg';
+import { ReactComponent as HeartSvg } from 'icons/heart.svg';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/Contacts/contacts.reducer';
 
@@ -33,7 +34,6 @@ const pictures = [
   'https://pixabay.com/get/g5461a7c5760cefe816b4a65885a8a8da4427ae4b663484a26c72350c57b2d8ce256aea30dda5a86d678862dcda29f00de69e2842b0469abe19ba8e14a0f38e80_640.jpg',
   'https://pixabay.com/get/g8a7c633ad483a7127424a6a66eac30a7deb47aba844496e8e44c96421dbcd3b046b1bca7070d23895cb081e87c74b5b87a02c41ddfad338c0cfc1d3ed8542760_640.jpg',
   'https://pixabay.com/get/g36c7cf6bfb8acf7d85ced48b93b1e7a5cb437bc63a46e255a45e8d582ab0d3f7fe5fcfb0d49f47757f31712b495fd5ac_640.jpg',
-
 ];
 
 export const ContactsList = () => {
@@ -50,7 +50,12 @@ export const ContactsList = () => {
   function getRandomPicture(pictures) {
     var randomPicture = pictures[Math.floor(Math.random() * pictures.length)];
     return randomPicture;
-}
+  }
+
+  const onFavorite = (e) => {
+    const favoriteContact = e.currentTarget;
+    favoriteContact.classList.toggle('favorite');
+  }
 
   return (
     <StyledList>
@@ -66,17 +71,26 @@ export const ContactsList = () => {
       <ul className="contacts-list">
         {filteredContacts.map(({ id, name, number }) => (
           <li key={id} className="list-name">
-            <img className="profile-photo" src={getRandomPicture(pictures)} alt={name} />
+            <img
+              className="profile-photo"
+              src={getRandomPicture(pictures)}
+              alt={name}
+            />
             <div>
               <p>{name}:</p>
               <p>{number}</p>
             </div>
+            
             <button
               className="remove-btn"
               type="button"
               onClick={() => handleDeleteContact(id)}
             >
+              
               <TrashSvg />
+            </button>
+            <button onClick={onFavorite} className='favorite-btn'>
+              <HeartSvg/>
             </button>
           </li>
         ))}

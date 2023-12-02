@@ -30,9 +30,9 @@ export const StyledNewContactForm = styled.div`
   .title-box {
     text-align: center;
     color: #000;
-    font-size: 18px;
+    font-size: 20px;
     font-style: normal;
-    font-weight: 100;
+    font-weight: 400;
     line-height: normal;
     position: absolute;
     top: 170px;

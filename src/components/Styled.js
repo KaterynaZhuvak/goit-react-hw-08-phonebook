@@ -9,9 +9,11 @@ export const StyledBook = styled.div`
   overflow: scroll;
   border: 1px solid #9dc180;
 
-  header nav ul {
+  header nav div {
     padding: 20px 0px;
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
     gap: 30px;
     list-style-type: none;
   }
@@ -29,5 +31,19 @@ export const StyledBook = styled.div`
   header .active {
     background-color: #9dc180;
     color: #ffffff;
+  }
+
+  .button-log-out {
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    color: #9dc180;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+
+  .button-log-out:hover,
+  .button-log-out:focus {
+    transform: scale(1.3)
   }
 `;

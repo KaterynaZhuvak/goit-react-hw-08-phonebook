@@ -1,3 +1,4 @@
+import { StyledLoginForm } from 'components/LoginComponent/Styled';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from 'redux/Auth/auth.reducer';
 
@@ -18,20 +19,23 @@ export const RegisterComponent = () => {
     dispatch(registerThunk(formData));
   };
   return (
-    <form action="submit" onSubmit={onSubmit}>
+    <StyledLoginForm>
+      <p className='title'>Please register your account!</p>
+      <form action="submit" onSubmit={onSubmit}>
       <label>
-        Name
-        <input type="text" name="userName" required />
+        Name:
+        <input type="text" name="userName" placeholder='Kateryna' required />
       </label>
       <label>
-        Email
-        <input type="email" name="userEmail" required />
+        Email:
+        <input type="email" name="userEmail" placeholder='kateryna@gmail.com' required />
       </label>
       <label>
-        Password
-        <input type="password" name="userPassword" required />
+        Password:
+        <input type="password" name="userPassword" placeholder='*******' minLength='7' required />
       </label>
       <button type="submit">Sign up</button>
     </form>
+    </StyledLoginForm>
   );
 };
