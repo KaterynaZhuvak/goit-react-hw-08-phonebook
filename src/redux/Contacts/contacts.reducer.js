@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { instance } from 'redux/Auth/auth.reducer';
 
 export const fetchContacts = createAsyncThunk(
-  'contactList/getContacts',
+  'contacts/getContacts',
   async (_, thunkApi) => {
     try {
       const { data } = await instance.get('/contacts');
