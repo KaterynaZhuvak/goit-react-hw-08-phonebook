@@ -7,7 +7,7 @@ import Register from 'pages/Register/Register';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { logOutThunk, refreshThunk } from 'redux/Auth/auth.reducer';
-import { selectAuthAuthenticated, selectAuthUserData } from 'redux/Auth/auth.selectors';
+import { selectAuthAuthenticated } from 'redux/Auth/auth.selectors';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 
