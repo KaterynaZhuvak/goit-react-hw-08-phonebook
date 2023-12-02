@@ -13,7 +13,6 @@ import { PrivateRoute } from './PrivateRoute';
 
 export const App = () => {
   const authenticated = useSelector(selectAuthAuthenticated);
-  const userData = useSelector(selectAuthUserData)
   const dispatch = useDispatch()
 
   useEffect(() => {
