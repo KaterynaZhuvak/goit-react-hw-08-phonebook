@@ -15,18 +15,28 @@ export const LoginComponent = () => {
     dispatch(loginThunk(formData));
   };
   return (
-    <StyledLoginForm>
+    <StyledLoginForm className="container">
       <p className="title">Welcome!</p>
       <form action="submit" onSubmit={onSubmit}>
         <label>
-          Email:
-          <input type="email" name="userEmail" placeholder='kateryna@gmail.com' required />
+          <input
+            type="email"
+            name="userEmail"
+            placeholder="kateryna@gmail.com"
+            required
+          />
         </label>
         <label>
-          Password:
-          <input type="password" name="userPassword" placeholder='*******' required />
+          <input
+            type="password"
+            name="userPassword"
+            placeholder="*******"
+            required
+          />
         </label>
-        <button type="submit">Sign in</button>
+        <button className="btn-log" type="submit">
+          Sign in
+        </button>
       </form>
     </StyledLoginForm>
   );

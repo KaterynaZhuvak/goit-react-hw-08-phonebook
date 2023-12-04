@@ -1,7 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { StyledNewContactForm } from './Styled';
-import { ReactComponent as PersonSvg } from 'icons/person.svg';
 
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
@@ -50,43 +49,41 @@ export const ContactForm = () => {
 
   return (
     <StyledNewContactForm>
-      <div>
-        <div className="hero">
-          <PersonSvg />
+      <div className="container">
+        <h1 className="title">Hello {userData.name}!</h1>
+        <div className="box-shadow">
+          <Formik
+            initialValues={initialValues}
+            validationSchema={schema}
+            onSubmit={handleSubmit}
+          >
+            <Form action="submit">
+              <label htmlFor="">
+                <p className="input-title">Name</p>
+                <Field
+                  className="input"
+                  type="text"
+                  name="name"
+                  placeholder="Bob Pummer"
+                />
+                <ErrorMessage name="name" render={msg => <div>{msg}</div>} />
+              </label>
+              <label htmlFor="">
+                <p className="input-title">Number</p>
+                <Field
+                  className="input"
+                  type="tel"
+                  name="number"
+                  placeholder="06844673287"
+                />
+                <ErrorMessage name="number" render={msg => <div>{msg}</div>} />
+              </label>
+              <button className="button-add-contact" type="submit">
+                Save
+              </button>
+            </Form>
+          </Formik>
         </div>
-        <div className="title-box">Hello {userData.name}!</div>
-
-        <Formik
-          initialValues={initialValues}
-          validationSchema={schema}
-          onSubmit={handleSubmit}
-        >
-          <Form action="submit" className="form-box">
-            <label htmlFor="">
-              <p className="input-title">Name</p>
-              <Field
-                className="input"
-                type="text"
-                name="name"
-                placeholder="Bob Pummer"
-              />
-              <ErrorMessage name="name" render={msg => <div>{msg}</div>} />
-            </label>
-            <label htmlFor="">
-              <p className="input-title">Number</p>
-              <Field
-                className="input"
-                type="tel"
-                name="number"
-                placeholder="06844673287"
-              />
-              <ErrorMessage name="number" render={msg => <div>{msg}</div>} />
-            </label>
-            <button className="button-add-contact" type="submit">
-              Save
-            </button>
-          </Form>
-        </Formik>
       </div>
     </StyledNewContactForm>
   );

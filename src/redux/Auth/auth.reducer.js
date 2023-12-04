@@ -14,7 +14,6 @@ export const loginThunk = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const { data } = await instance.post('/users/login', formData);
-      console.log(data);
       setToken(data.token);
       return data;
     } catch (err) {
@@ -28,11 +27,9 @@ export const registerThunk = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const { data } = await instance.post('/users/signup', formData);
-      console.log(data);
       setToken(data.token);
       return data;
     } catch (err) {
-      console.error('Error:', err);
       return thunkApi.rejectWithValue(err.message);
     }
   }
@@ -43,11 +40,8 @@ export const logOutThunk = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const { data } = await instance.post('/users/logout');
-      console.log(data);
-
       return data;
     } catch (err) {
-      console.error('Error:', err);
       return thunkApi.rejectWithValue(err.message);
     }
   }
@@ -61,11 +55,8 @@ export const refreshThunk = createAsyncThunk(
       const token = state.auth.token;
       setToken(token);
       const { data } = await instance.get('/users/current');
-      console.log(data);
-
       return data;
     } catch (err) {
-      console.error('Error:', err);
       return thunkApi.rejectWithValue(err.message);
     }
   },

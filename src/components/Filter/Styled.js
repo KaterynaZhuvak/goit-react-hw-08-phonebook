@@ -4,6 +4,7 @@ export const StyledFilterInput = styled.div`
   padding-bottom: 20px;
 
   .filter-input {
+    margin-top: 20px;
     border-radius: 35px;
     background: #e5e5e5;
     border: none;

@@ -1,25 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledNewContactForm = styled.div`
-  position: relative;
-  .hero {
-    background-color: #9dc180;
-    width: 100%;
-    height: 200px;
-    padding: 0px;
-    position: relative;
-  }
-
-  .hero svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    fill: #fff;
-  }
-
   .input-title {
-    color: #9dc180;
+    color: rgb(21, 21, 65);
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
@@ -27,44 +10,39 @@ export const StyledNewContactForm = styled.div`
     margin-bottom: 10px;
   }
 
-  .title-box {
+  .title {
+    font-size: 40px;
+    color: rgb(245, 239, 232);
     text-align: center;
-    color: #000;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    position: absolute;
-    top: 170px;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    width: 366px;
-    padding: 25px 0;
-    border-radius: 15px;
-    background: #fff;
-    box-shadow: 3px 6px 6px 0px rgba(67, 67, 67, 0.25),
-      0px 0px 6px 0px rgba(0, 0, 0, 0.25);
+    margin: 40px 0px;
   }
 
-  .form-box {
+  .box-shadow {
     padding: 15px;
-    position: absolute;
-    top: 260px;
-    left: 50%;
-    transform: translate(-50%, 0%);
     width: 351px;
     height: 273px;
+    margin-right: auto;
+    margin-left: auto;
     border-radius: 15px;
-    background: #fff;
-    box-shadow: 3px 6px 6px 0px rgba(67, 67, 67, 0.25),
-      0px 0px 6px 0px rgba(0, 0, 0, 0.25);
+    background-color: rgb(245, 239, 232);
+    animation: animate 2s linear infinite;
+    box-shadow: 0px 0px 50px green, 0px 0px 50px deepskyblue;
+  }
+
+  @keyframes animate {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
   }
 
   .input {
     font-size: 18px;
     width: 300px;
     border: none;
-    border-bottom: 1px solid #9dc180;
+    border-bottom: 1px solid rgb(21, 21, 65);
     background-color: transparent;
     margin-bottom: 20px;
   }

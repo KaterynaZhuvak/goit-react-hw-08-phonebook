@@ -10,6 +10,11 @@ export const StyledList = styled.div`
     background-size: cover;
   }
 
+  .no-contacts-title {
+    color: rgb(245, 239, 232);
+    font-size: 20px;
+  }
+
   .list-name {
     list-style-type: none;
     display: flex;
@@ -19,19 +24,19 @@ export const StyledList = styled.div`
     align-items: center;
     padding-left: 10px;
     position: relative;
-    color: #000;
+    color: white;
     font-size: 18px;
     font-style: normal;
-    font-weight: 200;
+    font-weight: 300px;
     line-height: normal;
     transition: 0.4s;
   }
 
   .list-name:hover,
   .list-name:focus {
-    background-color: #9dc180;
-    color: #fff;
-    fill: #fff;
+    background-color: rgb(224, 241, 245);
+    color: black;
+    fill: black;
   }
 
   .remove-btn {
@@ -45,6 +50,12 @@ export const StyledList = styled.div`
     cursor: pointer;
     transform: translateX(0);
     transition: 0.4s;
+    fill: white;
+  }
+
+  .list-name:hover .remove-btn,
+  .list-name:hover .favorite-btn {
+    fill: black;
   }
 
   .remove-btn:hover,
@@ -53,8 +64,8 @@ export const StyledList = styled.div`
   }
 
   .main-title {
-    color: #000;
-    font-size: 18px;
+    color: white;
+    font-size: 25px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
@@ -67,7 +78,7 @@ export const StyledList = styled.div`
   .favorite-btn {
     background-color: transparent;
     border: none;
-    fill: black;
+    fill: white;
     width: 30px;
     height: 30px;
     position: absolute;
@@ -81,8 +92,8 @@ export const StyledList = styled.div`
     fill: red;
   }
 
-  .favorite:hover {
-    transform: scale(1.3);
-    fill: red;
-  }
+  // .favorite-btn:hover {
+  //   transform: scale(1.3);
+  //   fill: black;
+  // }
 `;

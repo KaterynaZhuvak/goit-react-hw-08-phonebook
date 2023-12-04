@@ -6,7 +6,6 @@ export const fetchContacts = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const { data } = await instance.get('/contacts');
-      console.log(data);
       return data;
     } catch (err) {
       return thunkApi.rejectWithValue(err.message);
@@ -19,7 +18,6 @@ export const deleteContact = createAsyncThunk(
   async (contactId, thunkApi) => {
     try {
       const { data } = await instance.delete(`/contacts/${contactId}`);
-      console.log(data);
       return data.id;
     } catch (err) {
       return thunkApi.rejectWithValue(err.message);
@@ -32,7 +30,6 @@ export const addContact = createAsyncThunk(
   async (newContact, thunkApi) => {
     try {
       const { data } = await instance.post('/contacts', newContact);
-      console.log(data);
       return data;
     } catch (err) {
       return thunkApi.rejectWithValue(err.message);
@@ -57,7 +54,7 @@ const contactsSlice = createSlice({
       state.filter = payload;
     },
   },
-  extraReducers: (builder) =>
+  extraReducers: builder =>
     builder
       .addCase(fetchContacts.fulfilled, (state, { payload }) => {
         state.isLoading = false;
@@ -66,7 +63,7 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.contacts.items = state.contacts.items.filter(
-          (contact) => contact.id !== payload
+          contact => contact.id !== payload
         );
       })
       .addCase(addContact.fulfilled, (state, { payload }) => {
@@ -79,7 +76,7 @@ const contactsSlice = createSlice({
           deleteContact.pending,
           addContact.pending
         ),
-        (state) => {
+        state => {
           state.isLoading = true;
           state.error = null;
         }
