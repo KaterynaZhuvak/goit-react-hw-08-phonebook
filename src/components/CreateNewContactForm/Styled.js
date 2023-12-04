@@ -18,6 +18,7 @@ export const StyledNewContactForm = styled.div`
   }
 
   .box-shadow {
+    position: relative;
     padding: 15px;
     width: 351px;
     height: 273px;

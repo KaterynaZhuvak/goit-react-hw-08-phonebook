@@ -39,6 +39,15 @@ export const StyledLoginForm = styled.div`
     box-shadow: 0px 0px 50px green, 0px 0px 50px deepskyblue;
   }
 
+   @keyframes animate {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
   .btn-log:hover,
   .btn-log:focus {
     background-color: rgb(245, 239, 232);
