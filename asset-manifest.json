@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/goit-react-hw-08-phonebook/static/css/main.cde50363.css",
-    "main.js": "/goit-react-hw-08-phonebook/static/js/main.437c4f9e.js",
+    "main.js": "/goit-react-hw-08-phonebook/static/js/main.01486cba.js",
     "static/media/Smoke-darkness_iphone_1242x2688.jpg": "/goit-react-hw-08-phonebook/static/media/Smoke-darkness_iphone_1242x2688.f4fbad4d0306fd8bf61b.jpg",
     "index.html": "/goit-react-hw-08-phonebook/index.html",
     "static/media/heart.svg": "/goit-react-hw-08-phonebook/static/media/heart.442714f1d13917cd7a2fcd98980cb6aa.svg",
     "static/media/trashSvg.svg": "/goit-react-hw-08-phonebook/static/media/trashSvg.388eed16949dde37eb90d7ea85f3bdde.svg",
     "main.cde50363.css.map": "/goit-react-hw-08-phonebook/static/css/main.cde50363.css.map",
-    "main.437c4f9e.js.map": "/goit-react-hw-08-phonebook/static/js/main.437c4f9e.js.map"
+    "main.01486cba.js.map": "/goit-react-hw-08-phonebook/static/js/main.01486cba.js.map"
   },
   "entrypoints": [
     "static/css/main.cde50363.css",
-    "static/js/main.437c4f9e.js"
+    "static/js/main.01486cba.js"
   ]
 }
